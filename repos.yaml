@@ -1,0 +1,13 @@
+repos:
+  - owner: Oddant1
+    name: qiime2
+    branch: test
+  - owner: Oddant1
+    name: q2cli
+    branch: test
+  - owner: Oddant1
+    name: q2-types
+    branch: test
+  - owner: Oddant1
+    name: q2-cookiecutter
+    branch: test
