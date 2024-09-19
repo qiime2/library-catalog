@@ -32,11 +32,13 @@ This file must have the following `key: value` pairs:
 short_description: Ideally 300 character or less description of what the plugin is and does.
 long_description_path: A path relative to the root of the repo to a MarkDown formatted file describing the plugin in more depth. This can simply be the repo's README if you want, or you can write your own new MarkDown file specifically for library and put it in the `.qiime2/library` folder or anywhere else in the repo.
 user_docs_link: A link to the user docs for this plugin.
-additional_install_steps: true or false, does your plugin require additional install steps adter installing the conda environment?
 ```
-
-__Note:__ If your plugin does require additional install steps, then you must supply install instructions in your long description.
 
 ## environments/
 
 Additionally, all repos in the QIIME 2 library must have conda environment.yml files for each supported QIIME 2 release with the following naming scheme `<repo-name>-qiime2-<distro>-<epoch>.yml`. These files must be located in the `/.qiime2/library/environments/` folder.
+
+### Additional Requirements
+
+1. Your plugin must be fully installable via these environment files with no extra steps required.
+2. Your enviornment files must NOT contain a `name` field. The end user is expected to provide the name on the command line when they install.
