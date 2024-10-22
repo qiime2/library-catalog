@@ -10,35 +10,24 @@ Simply open a PR adding a `<my-plugin-name>.yml` file to the `plugins` folder. T
 owner: <repo-owner>
 name: <repo-name>
 branch: <target-branch>
+docs: <latest-docs-url>
 ```
 
 # Requirements for added plugins
 
-As stated previously, plugins aded to QIIME 2 Library must exist as GitHub repos. In addtiong, plugins added to the QIIME 2 library are required to contain the following directory structure.
+As stated previously, plugins aded to QIIME 2 Library must exist as GitHub repos. This is because the QIIME 2 Library uses the GitHub REST API to retrieve information about your plugin. You need to ensure your plugin has the following.
 
-```
-/.qiime2/library/
-                |_info.yml
-                |_/environments/
-                               |_<plugin-name>-qiime2-<distro>-<epoch>.yml
-                               |_...
-```
+## A GitHub about section
 
-The top level of the repo must contain a `.qiime2` folder which must contain a `library` folder. The library folder must contain an `info.yml` file and an `environments` folder.
+This will be used as the short description for your plugin in library. It should be 300 or so characters max and should describe what your plugin is.
 
-## info.yml
+## A top level README.md
 
-This file must have the following `key: value` pairs:
+This will be rendered as MarkDown on library, and should give a detailed description of your plugin and what it does.
 
-```yaml
-short_description: Ideally 300 character or less description of what the plugin is and does.
-long_description_path: A path relative to the root of the repo to a MarkDown formatted file describing the plugin in more depth. This can simply be the repo's README if you want, or you can write your own new MarkDown file specifically for library and put it in the `.qiime2/library` folder or anywhere else in the repo.
-user_docs_link: A link to the user docs for this plugin.
-```
+## A top level environment-files directory
 
-## environments/
-
-Additionally, all repos in the QIIME 2 library must have conda environment.yml files for each supported QIIME 2 release with the following naming scheme `<plugin-name>-qiime2-<distro>-<epoch>.yml`. These files must be located in the `/.qiime2/library/environments/` folder.
+Additionally, all repos in the QIIME 2 library must have conda environment.yml files for each supported QIIME 2 release with the following naming scheme `<plugin-name>-qiime2-<distro>-<epoch>.yml`. These files must be located in the `/environment-files` folder.
 
 ### Additional Requirements
 
