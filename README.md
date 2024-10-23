@@ -25,6 +25,8 @@ This will be used as the short description for your plugin in library. It should
 
 This will be rendered as MarkDown on library, and should give a detailed description of your plugin and what it does.
 
+NOTE: If your readme references any resources using paths relative to the root of your repository these resources WILL NOT LOAD on QIIME 2 Library. Only resources referenced with absolute URLs will load. This is because we are not cloning and rehosting your assets.
+
 ## A top level environment-files directory
 
 Additionally, all repos in the QIIME 2 library must have conda environment.yml files for each supported QIIME 2 release with the following naming scheme `<plugin-name>-qiime2-<distro>-<epoch>.yml`. These files must be located in the `/environment-files` folder.
