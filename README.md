@@ -35,3 +35,9 @@ Additionally, all repos in the QIIME 2 library must have conda environment.yml f
 
 1. Your plugin must be fully installable via these environment files with no extra steps required.
 2. Your environment files must NOT contain a `name` field. The end user is expected to provide the name on the command line when they install.
+
+## Example PR
+
+An [example PR](https://github.com/qiime2/library-plugins/pull/3) showing the addition of a plugin to the library in a single atomic commit.
+
+NOTE: Your plugin must be compliant with the above specifications for us to merge your PR.
