@@ -26,7 +26,7 @@ jobs:
       # Get new/changed files?
       # Not positive this works yet
       - name: Added Files
-        run: GITHUB_OUTPUT=`git diff --name-only --diff-filter=A HEAD~ HEAD`
+        run: echo "git diff --name-only --diff-filter=A HEAD~ HEAD" >> $GITHUB_OUTPUT
 
       # Lint all added files
       - name: Lint
