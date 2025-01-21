@@ -4,10 +4,10 @@ name: lint-pr
 on:
   # Possible to only run on PR that modifies plugins?
   pull_request:
-    # branches:
-    #   - 'main'
-    # paths:
-    #   - '/plugins/**'
+    branches:
+      - 'main'
+    paths:
+      - '/plugins/**'
 
 # Checkout
 jobs:
