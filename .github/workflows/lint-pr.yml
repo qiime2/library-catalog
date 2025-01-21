@@ -27,8 +27,8 @@ jobs:
       # Not positive this works yet
       - name: Added Files
         run: |
-          git fetch origin main
-          GITHUB_OUTPUT=`git diff --name-only --diff-filter=A main~ main`
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          git diff --name-only --diff-filter=A origin/${{ github.event.pull_request.base.ref }}...${{ github.sha }}
 
       # Lint all added files
       - name: Lint
