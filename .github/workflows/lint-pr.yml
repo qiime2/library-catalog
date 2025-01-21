@@ -29,8 +29,9 @@ jobs:
         run: |
           git diff --name-only HEAD~ HEAD
           {
-            echo 'DIFF<<\n'
+            echo 'DIFF<<EOF'
             git diff --name-only HEAD~ HEAD
+            echo EOF
           } >> "$GITHUB_ENV"
 
       # Lint all plugins/** files in diff (filtering of diff occurs in Python)
