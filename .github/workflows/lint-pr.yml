@@ -32,7 +32,7 @@ jobs:
       # Lint all added files
       - name: Lint
         run: |
-          python .github/scripts/lint.py $GITHUB_OUTPUT
+          python /home/runner/work/library-plugins/.github/scripts/lint.py $GITHUB_OUTPUT
 
 
 # Lint all files in plugins
