@@ -30,7 +30,9 @@ jobs:
 
       # Lint all added files
       - name: Lint
-        run: python .github/scripts/lint.py $GITHUB_OUTPUT
+        run: |
+          echo $GITHUB_OUTPUT
+          python .github/scripts/lint.py $GITHUB_OUTPUT
 
 
 # Lint all files in plugins
