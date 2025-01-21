@@ -23,10 +23,16 @@ jobs:
           fetch-depth: 2
 
       # Get diff
+      # This feels odd to me got it from
+      # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#multiline-strings
       - name: Get Diff
         run: |
           git diff --name-only HEAD~ HEAD
-          echo "DIFF=`git diff --name-only HEAD~ HEAD`" >> $GITHUB_ENV
+          {
+            echo 'DIFF<<\n'
+            git diff --name-only HEAD~ HEAD
+            echo \n
+          } >> "$GITUB_ENV"
 
       # Lint all plugins/** files in diff (filtering of diff occurs in Python)
       - name: Lint
