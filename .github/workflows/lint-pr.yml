@@ -32,7 +32,7 @@ jobs:
       # Lint all added files
       - name: Lint
         run: |
-          find / -type f -iname lint.py
+          find /home/runner/work -type f -iname lint.py 2> /dev/null
           python .github/scripts/lint.py $GITHUB_OUTPUT
 
 
