@@ -31,7 +31,7 @@ jobs:
           {
             echo 'DIFF<<\n'
             git diff --name-only HEAD~ HEAD
-            echo \n
+            echo '\n'
           } >> "$GITUB_ENV"
 
       # Lint all plugins/** files in diff (filtering of diff occurs in Python)
