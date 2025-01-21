@@ -21,7 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          sparse-checkout: plugins
           fetch-depth: 2
 
       # Get new/changed files?
@@ -31,9 +30,7 @@ jobs:
 
       # Lint all added files
       - name: Lint
-        run: |
-          find /home/runner/work -type f -iname lint.py 2> /dev/null
-          python .github/scripts/lint.py $GITHUB_OUTPUT
+        run: python .github/scripts/lint.py $GITHUB_OUTPUT
 
 
 # Lint all files in plugins
