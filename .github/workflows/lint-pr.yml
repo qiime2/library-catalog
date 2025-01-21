@@ -27,12 +27,13 @@ jobs:
       # Not positive this works yet
       - name: Added Files
         run: echo "git diff --name-only --diff-filter=A HEAD~ HEAD" >> $GITHUB_OUTPUT
+        id: get_added_files
 
       # Lint all added files
       - name: Lint
         run: |
-          echo $GITHUB_OUTPUT
-          python .github/scripts/lint.py $GITHUB_OUTPUT
+          echo ${{ steps.get_added_files.outputs }}
+          python .github/scripts/lint.py ${{ steps.get_added_files.outputs }}
 
 
 # Lint all files in plugins
