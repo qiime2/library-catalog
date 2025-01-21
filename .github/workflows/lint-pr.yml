@@ -27,13 +27,10 @@ jobs:
       # Not positive this works yet
       - name: Added Files
         run: echo "DIFF=`git diff --name-only --diff-filter=A HEAD~ HEAD`" >> $GITHUB_ENV
-        id: get_added_files
 
       # Lint all added files
       - name: Lint
-        run: |
-          echo $DIFF
-          python .github/scripts/lint.py $DIFF
+        run: python .github/scripts/lint.py $DIFF
 
 
 # Lint all files in plugins
