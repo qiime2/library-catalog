@@ -4,6 +4,10 @@ import yaml
 import requests
 
 
+DIR = 'plugins'
+FILE_START = 'q2-'
+FILE_EXT = '.yml'
+
 KEY_SET = set(['owner', 'name', 'branch', 'docs'])
 
 
@@ -24,10 +28,11 @@ if __name__ == "__main__":
 
     for file in files:
         head, tail = os.path.split(file)
+        file_name, file_ext = os.path.splitext(tail)
 
         # We only care about files added to the plugins dir
-        if head == 'plugins':
-            if tail[0:3] != 'q2-' or tail[-4:] != '.yml':
+        if head == DIR:
+            if file_name[0:3] != FILE_START or file_ext != FILE_EXT:
                 raise ValueError('File name must conform to q2-*.yml')
 
             with open(file, 'r') as fh:
