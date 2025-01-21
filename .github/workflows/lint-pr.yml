@@ -24,9 +24,8 @@ jobs:
           fetch-depth: 2
 
       # Get new/changed files?
-      # Not positive this works yet
       - name: Added Files
-        run: echo "DIFF=`git diff --name-only --diff-filter=A HEAD~ HEAD`" >> $GITHUB_ENV
+        run: echo "DIFF=`git diff --name-only HEAD~ HEAD`" >> $GITHUB_ENV
 
       # Lint all added files
       - name: Lint
