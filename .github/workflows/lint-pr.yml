@@ -31,8 +31,8 @@ jobs:
           {
             echo 'DIFF<<\n'
             git diff --name-only HEAD~ HEAD
-            echo '\n'
-          } >> "$GITUB_ENV"
+            echo \n
+          } >> "$GITHUB_ENV"
 
       # Lint all plugins/** files in diff (filtering of diff occurs in Python)
       - name: Lint
