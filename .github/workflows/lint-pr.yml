@@ -1,15 +1,13 @@
 name: lint-pr
 
-# Run on PR
+# Run on PR changing files in plugins dir against main
 on:
-  # Possible to only run on PR that modifies plugins?
   pull_request:
     branches:
       - 'main'
     paths:
       - 'plugins/**'
 
-# Checkout
 jobs:
   lint:
     permissions:
@@ -18,16 +16,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout new commit and prior HEAD
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      # Get new/changed files?
-      - name: Added Files
+      # Get diff
+      - name: Get Diff
         run: echo "DIFF=`git diff --name-only HEAD~ HEAD`" >> $GITHUB_ENV
 
-      # Lint all added files
+      # Lint all plugins/** files in diff (filtering of diff occurs in Python)
       - name: Lint
         run: python .github/scripts/lint.py $DIFF
 
