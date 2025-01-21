@@ -24,7 +24,9 @@ jobs:
 
       # Get diff
       - name: Get Diff
-        run: echo "DIFF=`git diff --name-only HEAD~ HEAD`" >> $GITHUB_ENV
+        run: |
+          git diff --name-only HEAD~ HEAD
+          echo "DIFF=`git diff --name-only HEAD~ HEAD`" >> $GITHUB_ENV
 
       # Lint all plugins/** files in diff (filtering of diff occurs in Python)
       - name: Lint
