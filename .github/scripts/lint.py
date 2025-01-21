@@ -1,3 +1,4 @@
+import os
 import sys
 import yaml
 import requests
@@ -22,6 +23,13 @@ if __name__ == "__main__":
     files = sys.argv[1:]
 
     for file in files:
-        with open(file, 'r') as fh:
-            yml = yaml.safe_load(fh)
-            lint(yml)
+        head, tail = os.path.split(file)
+
+        # We only care about files added to the plugins dir
+        if head == 'plugins':
+            if tail[0:3] != 'q2-' or tail[-4:] != '.yml':
+                raise ValueError('File name must conform to q2-*.yml')
+
+            with open(file, 'r') as fh:
+                yml = yaml.safe_load(fh)
+                lint(yml)
