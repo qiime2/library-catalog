@@ -1,4 +1,4 @@
 owner: caporaso-lab
 name: genome-sampler
-branch: docs-usage-examples
+branch: dev
 docs: https://genome-sampler.readthedocs.io/en/latest/
