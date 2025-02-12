@@ -27,7 +27,7 @@ jobs:
 
       # Lint all added files
       - name: Lint
-        run: python .github/scripts/lint.py $DIFF
+        run: python .github/scripts/lint.py ${{ secrets.GITHUB_TOKEN }} $DIFF
 
 
 # Lint all files in plugins

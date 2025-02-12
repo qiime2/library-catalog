@@ -6,9 +6,9 @@ import requests
 
 
 KEY_SET = set(['owner', 'name', 'branch', 'docs'])
-
-
 ENV_FILE_REGEX = '.*-qiime2-.*-20[0-9][0-9]\.([1-9]|1[0-2])\.yml'
+GITHUB_BASE_URL = "https://api.github.com"
+
 env_urls = []
 
 
@@ -41,9 +41,12 @@ def lint(yml):
         if re.search(ENV_FILE_REGEX, env.name) is not None:
             env_urls.append(env['download_url'])
 
+    print(env_urls)
+
 
 if __name__ == "__main__":
-    files = sys.argv[1:]
+    GITHUB_TOKEN = sys.argv[1]
+    files = sys.argv[2:]
 
     for file in files:
         with open(file, 'r') as fh:
