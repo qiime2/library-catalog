@@ -12,9 +12,6 @@ on:
 # Checkout
 jobs:
   lint:
-    permissions:
-      contents: read
-
     runs-on: ubuntu-latest
 
     steps:
