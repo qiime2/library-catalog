@@ -58,9 +58,9 @@ jobs:
         env:
           url: ${{ matrix.url }}
         run: |
-          conda env create -y -p test -f $url
-          mkdir -p test/etc
-          cat <<EOF > 'test/etc/activate.sh'
+          conda env create -y -p ./test -f $url
+          mkdir -p ./test/etc
+          cat <<EOF > './test/etc/activate.sh'
             . "$CONDA/etc/profile.d/conda.sh"
             conda activate 'test'
           EOF
@@ -68,8 +68,8 @@ jobs:
 
       - name: Test
         run: |
-          source test/etc/activate.sh
-          conda activate test
+          source ./test/etc/activate.sh
+          conda activate ./test
           qiime info
     # strategy:
     #   matrix:
