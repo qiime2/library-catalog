@@ -10,7 +10,7 @@ on:
     workflow_dispatch:
 
 jobs:
-  lint:
+  lint-yml:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,16 +32,16 @@ jobs:
           } >> "$GITHUB_ENV"
 
       # Lint all plugins/** files in diff (filtering of diff occurs in Python)
-      - name: Lint
+      - name: Lint Yml and Get Env Files
         id: lint
         run: python .github/scripts/lint.py ${{ secrets.GITHUB_TOKEN }} $DIFF
 
   lint-envs:
     runs-on: ubuntu-latest
-    needs: lint
+    needs: lint-yml
     strategy:
       matrix:
-        env-file: ${{ needs.lint.outputs.lint.ENV_FILES }}
+        env-file: ${{ needs.lint-yml.outputs.ENV_FILES }}
 
     steps:
       - name: Echo
