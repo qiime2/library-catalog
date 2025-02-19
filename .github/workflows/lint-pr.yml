@@ -60,6 +60,7 @@ jobs:
         run: |
           echo $url
           conda env create -y -n test -f $url
+          conda init
           conda activate $url
           qiime info
     # strategy:
