@@ -46,10 +46,22 @@ jobs:
         url: ${{ fromJSON(needs.lint-yml.outputs.ENV_FILES) }}
 
     steps:
+      - name: 'setup miniconda'
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: ''
+          architecture: 'x64'
+          auto-activate-base: true
+          miniconda-version: 'latest'
+
       - name: Test
         env:
           url: ${{ matrix.url }}
-        run: echo $url
+        run: |
+          echo $url
+          conda create -y -n test $url
+          conda activate $url
+          qiime info
     # strategy:
     #   matrix:
     #     env-file: ${{ needs.lint-yml.outputs.ENV_FILES }}
