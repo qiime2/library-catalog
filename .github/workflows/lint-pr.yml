@@ -43,13 +43,13 @@ jobs:
     needs: lint-yml
     strategy:
       matrix:
-        env-file: ${{ fromJSON(needs.lint-yml.outputs.ENV_FILES) }}
+        url: ${{ fromJSON(needs.lint-yml.outputs.ENV_FILES) }}
 
     steps:
       - name: Test
         env:
-          env-file: ${{ matrix.env-file }}
-        run: echo ${{ env-file }}
+          url: ${{ matrix.url }}
+        run: echo $url
     # strategy:
     #   matrix:
     #     env-file: ${{ needs.lint-yml.outputs.ENV_FILES }}
