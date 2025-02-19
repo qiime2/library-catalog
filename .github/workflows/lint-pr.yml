@@ -42,7 +42,7 @@ jobs:
 
     steps:
       - name: Test
-        run: echo ${{needs.lint-yml.outputs}}
+        run: echo ${{ toJSON(needs.lint-yml.outputs) }}
     # strategy:
     #   matrix:
     #     env-file: ${{ needs.lint-yml.outputs.ENV_FILES }}
