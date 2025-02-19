@@ -44,6 +44,8 @@ jobs:
     strategy:
       matrix:
         url: ${{ fromJSON(needs.lint-yml.outputs.ENV_FILES) }}
+    env:
+      prefix: ./test
 
     steps:
       - name: Set up Miniconda
@@ -58,18 +60,18 @@ jobs:
         env:
           url: ${{ matrix.url }}
         run: |
-          conda env create -y -p ./test -f $url
-          mkdir -p ./test/etc
-          cat <<EOF > './test/etc/activate.sh'
+          conda env create -y -p ${{ env.prefix }} -f $url
+          mkdir -p ${{ env.prefix }}/etc
+          cat <<EOF > '${{ env.prefix }}/etc/activate.sh'
             . "$CONDA/etc/profile.d/conda.sh"
-            conda activate 'test'
+            conda activate '${{ env.prefix }}'
           EOF
           chmod +x 'test/etc/activate.sh'
 
       - name: Test
         run: |
-          source ./test/etc/activate.sh
-          conda activate ./test
+          source ${{ env.prefix }}/etc/activate.sh
+          conda activate ${{ env.prefix }}
           qiime info
     # strategy:
     #   matrix:
