@@ -46,7 +46,7 @@ jobs:
         url: ${{ fromJSON(needs.lint-yml.outputs.ENV_FILES) }}
 
     steps:
-      - name: Setup Miniconda
+      - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v3
         with:
           activate-environment: ''
@@ -54,7 +54,7 @@ jobs:
           auto-activate-base: true
           miniconda-version: 'latest'
 
-      - name: 'Set up test environment'
+      - name: Set up Test Environment
         env:
           url: ${{ matrix.url }}
         run: |
