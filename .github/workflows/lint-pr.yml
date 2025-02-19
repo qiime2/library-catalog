@@ -54,14 +54,21 @@ jobs:
           auto-activate-base: true
           miniconda-version: 'latest'
 
-      - name: Test
+      - name: 'Set up test environment'
         env:
           url: ${{ matrix.url }}
         run: |
-          echo $url
-          conda env create -y -n test -f $url
-          conda init
-          conda activate $url
+          conda env create -y -p test -f $url
+          mkdir -p test/etc
+          cat <<EOF > 'test/etc/activate.sh'
+            . "$CONDA/etc/profile.d/conda.sh"
+            conda activate 'test'
+          EOF
+          chmod +x 'test/etc/activate.sh'
+
+      - name: Test
+        run: |
+          conda activate test
           qiime info
     # strategy:
     #   matrix:
