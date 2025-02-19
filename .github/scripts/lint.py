@@ -50,6 +50,8 @@ def lint(yml):
             print()
             env_urls.append(env['download_url'])
 
+    print(env_urls)
+
 
 if __name__ == "__main__":
     GITHUB_TOKEN = sys.argv[1]
