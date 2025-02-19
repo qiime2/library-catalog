@@ -41,7 +41,7 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        env-file: ${{ needs.lint.outputs.lint }}
+        env-file: ${{ needs.lint.outputs.lint.ENV_FILES }}
 
     steps:
       - name: Echo
