@@ -45,9 +45,6 @@ def lint(yml):
 
     for env in envs:
         if re.search(ENV_FILE_REGEX, env['name']) is not None:
-            print(env['name'])
-            print(env)
-            print()
             env_urls.append(env['download_url'])
 
 if __name__ == "__main__":
@@ -67,4 +64,5 @@ if __name__ == "__main__":
                 yml = yaml.safe_load(fh)
                 lint(yml)
 
-    print(env_urls)
+    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+        fh.write(f'ENV_FILES={env_urls}\n')

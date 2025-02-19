@@ -33,8 +33,11 @@ jobs:
 
       # Lint all plugins/** files in diff (filtering of diff occurs in Python)
       - name: Lint
+        id: lint
         run: python .github/scripts/lint.py ${{ secrets.GITHUB_TOKEN }} $DIFF
 
+      - name: Lint Env Files
+        run: echo "${{ steps.lint.outputs.ENV_FILES }}"
 
 # Lint all files in plugins
   # If anything outside of plugins is changed then fail?
