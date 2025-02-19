@@ -50,9 +50,6 @@ def lint(yml):
             print()
             env_urls.append(env['download_url'])
 
-    print(env_urls)
-
-
 if __name__ == "__main__":
     GITHUB_TOKEN = sys.argv[1]
     files = sys.argv[2:]
@@ -69,3 +66,5 @@ if __name__ == "__main__":
             with open(file, 'r') as fh:
                 yml = yaml.safe_load(fh)
                 lint(yml)
+
+    print(env_urls)
