@@ -41,7 +41,7 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        env-file: ${{ fromJSON(needs.lint.outputs.ENV_FILES) }}
+        env-file: ${{ fromJSON(needs.lint.lint.outputs.ENV_FILES) }}
 
     steps:
       - name: Echo
