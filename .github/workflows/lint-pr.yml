@@ -41,10 +41,15 @@ jobs:
   lint-envs:
     runs-on: ubuntu-latest
     needs: lint-yml
+    strategy:
+      matrix:
+        env-file: ${{ fromJSON(needs.lint-yml.outputs.ENV_FILES) }}
 
     steps:
       - name: Test
-        run: echo ${{ needs.lint-yml.outputs.ENV_FILES }}
+        env:
+          env-file: ${{ matrix.env-file }}
+        run: echo ${{ env-file }}
     # strategy:
     #   matrix:
     #     env-file: ${{ needs.lint-yml.outputs.ENV_FILES }}
