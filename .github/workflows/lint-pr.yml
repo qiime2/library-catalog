@@ -59,7 +59,7 @@ jobs:
           url: ${{ matrix.url }}
         run: |
           echo $url
-          conda create -y -n test $url
+          conda create -y -n test -f $url
           conda activate $url
           qiime info
     # strategy:
