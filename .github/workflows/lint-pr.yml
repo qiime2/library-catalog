@@ -3,16 +3,14 @@ name: lint-pr
 # Run on PR changing files in plugins dir against main
 on:
   pull_request:
-    branches:
-      - 'main'
-    paths:
-      - 'plugins/**'
+    # branches:
+    #   - 'main'
+    # paths:
+    #   - '/plugins/**'
+    workflow_dispatch:
 
 jobs:
   lint:
-    permissions:
-      contents: read
-
     runs-on: ubuntu-latest
 
     steps:
