@@ -36,8 +36,19 @@ jobs:
         id: lint
         run: python .github/scripts/lint.py ${{ secrets.GITHUB_TOKEN }} $DIFF
 
-      - name: Lint Env Files
-        run: echo "${{ steps.lint.outputs.ENV_FILES }}"
+  lint-envs:
+    runs-on: ubuntu-latest
+    needs: lint
+    strategy:
+      matrix:
+        env-file: ${{ needs.lint.outputs.ENV_FILES }}
+
+    steps:
+      - name: Echo
+        env:
+          file: ${{ matrix.env-file }}
+
+        run: echo $color
 
 # Lint all files in plugins
   # If anything outside of plugins is changed then fail?
