@@ -6,7 +6,7 @@ on:
     branches:
       - 'main'
     paths:
-      - '/plugins/**'
+      - 'plugins/**.yml'
 
 jobs:
   lint-yml:

@@ -8,7 +8,7 @@ import requests
 DIR = 'plugins'
 
 KEY_SET = set(['owner', 'name', 'branch', 'docs'])
-ENV_FILE_REGEX = '.*-qiime2-.*-20[0-9][0-9]\.([1-9]|1[0-2])\.yml'
+ENV_FILE_REGEX = r'.*-qiime2-.*-20[0-9][0-9]\.([1-9]|1[0-2])\.yml'
 GITHUB_BASE_URL = "https://api.github.com"
 
 GITHUB_TOKEN = sys.argv[1]
@@ -44,16 +44,18 @@ def lint(yml):
 
     # Get all files in the /environment-files/ folder
     response = requests.get(url, headers=headers, params=query_params)
-    envs = response.json()
+    if response.ok:
+        envs = response.json()
 
-    # If the file matches the regex to be a QIIME 2 environment-file then keep
-    # track of its download URL
-    for env in envs:
-        if re.search(ENV_FILE_REGEX, env['name']) is not None:
-            plugin_env_urls.append(env['download_url'])
-
-    if plugin_env_urls == []:
-        raise ValueError(f'No QIIME 2 environment files found for repo: {yml["owner"]}:{yml["name"]}')
+        # If the file matches the regex to be a QIIME 2 environment-file then keep
+        # track of its download URL
+        for env in envs:
+            if re.search(ENV_FILE_REGEX, env['name']) is not None:
+                plugin_env_urls.append(env['download_url'])
+        if plugin_env_urls == []:
+            raise ValueError(f'No QIIME 2 environment files found for repo: {yml["owner"]}:{yml["name"]}.')
+    else:
+        raise ValueError(f'No environment-files directory found in repo: {yml["owner"]}:{yml["name"]}.\nGot response {response.json()}')
 
     return plugin_env_urls
 
