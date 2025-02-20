@@ -28,7 +28,7 @@ def _lint_yml(file):
     with open(file, 'r') as fh:
         yml = yaml.safe_load(fh)
 
-    key_set = set(yml.keys)
+    key_set = set(yml.keys())
 
     if diff := EXPECTED_KEY_SET.difference(key_set):
         raise ValueError(
