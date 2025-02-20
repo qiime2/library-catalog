@@ -3,11 +3,10 @@ name: lint-pr
 # Run on PR changing files in plugins dir against main
 on:
   pull_request:
-    # branches:
-    #   - 'main'
-    # paths:
-    #   - '/plugins/**'
-    workflow_dispatch:
+    branches:
+      - 'main'
+    paths:
+      - '/plugins/**'
 
 jobs:
   lint-yml:
@@ -74,16 +73,6 @@ jobs:
           source ${{ env.prefix }}/etc/activate.sh
           conda activate ${{ env.prefix }}
           qiime info
-    # strategy:
-    #   matrix:
-    #     env-file: ${{ needs.lint-yml.outputs.ENV_FILES }}
-
-    # steps:
-    #   - name: Echo
-    #     env:
-    #       file: ${{ matrix.env-file }}
-
-    #     run: echo $color
 
 # Lint all files in plugins
   # If anything outside of plugins is changed then fail?
