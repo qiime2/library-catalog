@@ -6,8 +6,6 @@ import requests
 
 
 DIR = 'plugins'
-FILE_START = 'q2-'
-FILE_EXT = '.yml'
 
 KEY_SET = set(['owner', 'name', 'branch', 'docs'])
 ENV_FILE_REGEX = '.*-qiime2-.*-20[0-9][0-9]\.([1-9]|1[0-2])\.yml'
@@ -57,9 +55,6 @@ if __name__ == "__main__":
 
         # We only care about files added to the plugins dir
         if head == DIR:
-            if file_name[0:3] != FILE_START or file_ext != FILE_EXT:
-                raise ValueError('File name must conform to q2-*.yml')
-
             with open(file, 'r') as fh:
                 yml = yaml.safe_load(fh)
                 lint(yml)
