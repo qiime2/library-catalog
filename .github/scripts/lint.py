@@ -34,13 +34,23 @@ def lint(yml):
 
     # Used for all requests for this repo
     base_url = f'{GITHUB_BASE_URL}/repos/{yml['owner']}/{yml['name']}'
+    base_query_params = {
+        'owner': yml['owner'],
+        'repo': yml['name'],
+        'ref': yml['branch'],
+    }
+
+    # Get README
+    readme_url =f'{base_url}/readme'
+
+    response = requests.get(readme_url, header=GITHUB_HEADERS, params=base_query_params)
+    if not response.ok:
+        raise ValueError(f'Failed to get README for repo: {yml['owner']}/{yml['repo']}.\nGot response {response.json()}')
 
     # Get env files
     env_files_url = f'{base_url}/contents/environment-files'
     env_files_query_params = {
-        'owner': yml['owner'],
-        'repo': yml['name'],
-        'ref': yml['branch'],
+        **base_query_params,
         'path': '/environment-files/'
     }
 
@@ -56,9 +66,9 @@ def lint(yml):
                 plugin_env_urls.append(env['download_url'])
 
         if plugin_env_urls == []:
-            raise ValueError(f'No QIIME 2 environment files found for repo: {yml["owner"]}:{yml["name"]}.')
+            raise ValueError(f'No QIIME 2 environment files found for repo: {yml["owner"]}:/yml["name"]}.')
     else:
-        raise ValueError(f'No environment-files directory found in repo: {yml["owner"]}:{yml["name"]}.\nGot response {response.json()}')
+        raise ValueError(f'No environment-files directory found in repo: {yml["owner"]}/{yml["name"]}.\nGot response {response.json()}')
 
     return plugin_env_urls
 
