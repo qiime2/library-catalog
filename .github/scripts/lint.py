@@ -13,12 +13,15 @@ GITHUB_BASE_URL = "https://api.github.com"
 
 GITHUB_TOKEN = sys.argv[1]
 GITHUB_BASE_URL = 'https://api.github.com'
-
+GITHUB_HEADERS = {
+    'Authorization': f'token: {GITHUB_TOKEN}',
+    'X-GitHub-Api-Version': '2022-11-28'
+}
 
 # TODO:
 # 1. Yell if there is no description
 # 2. Yell if there is no README
-# 3. Yell if there are no env files
+# 3. Yell if there are no env files X
 def lint(yml):
     plugin_env_urls = []
 
@@ -29,13 +32,12 @@ def lint(yml):
     response = requests.get(yml['docs'])
     assert response.status_code == 200
 
-    # Put together the owner/name:branch
-    url = f'{GITHUB_BASE_URL}/repos/{yml['owner']}/{yml['name']}/contents/environment-files'
-    headers = {
-        'Authorization': f'token: {GITHUB_TOKEN}',
-        'X-GitHub-Api-Version': '2022-11-28'
-    }
-    query_params = {
+    # Used for all requests for this repo
+    base_url = f'{GITHUB_BASE_URL}/repos/{yml['owner']}/{yml['name']}'
+
+    # Get env files
+    env_files_url = f'{base_url}/contents/environment-files'
+    env_files_query_params = {
         'owner': yml['owner'],
         'repo': yml['name'],
         'ref': yml['branch'],
@@ -43,7 +45,7 @@ def lint(yml):
     }
 
     # Get all files in the /environment-files/ folder
-    response = requests.get(url, headers=headers, params=query_params)
+    response = requests.get(env_files_url, headers=GITHUB_HEADERS, params=env_files_query_params)
     if response.ok:
         envs = response.json()
 
