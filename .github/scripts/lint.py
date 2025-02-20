@@ -46,6 +46,8 @@ def lint(yml):
     response = requests.get(url, headers=headers, params=query_params)
     envs = response.json()
 
+    print(envs)
+
     # If the file matches the regex to be a QIIME 2 environment-file then keep
     # track of its download URL
     for env in envs:
