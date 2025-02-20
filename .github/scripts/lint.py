@@ -52,7 +52,7 @@ def _check_readme(base_url, base_query_params, repo_name):
     readme_url =f'{base_url}/readme'
 
     response = requests.get(
-        readme_url, header=GITHUB_HEADERS, params=base_query_params)
+        readme_url, headers=GITHUB_HEADERS, params=base_query_params)
     if not response.ok:
         raise ValueError(
             f'Failed to get README for repo: {repo_name}.\n'
