@@ -44,18 +44,19 @@ def lint(yml):
 
     # Get all files in the /environment-files/ folder
     response = requests.get(url, headers=headers, params=query_params)
-    envs = response.json()
+    if response.ok:
+        envs = response.json()
 
-    print(envs)
+        # If the file matches the regex to be a QIIME 2 environment-file then keep
+        # track of its download URL
+        for env in envs:
+            if re.search(ENV_FILE_REGEX, env['name']) is not None:
+                plugin_env_urls.append(env['download_url'])
 
-    # If the file matches the regex to be a QIIME 2 environment-file then keep
-    # track of its download URL
-    for env in envs:
-        if re.search(ENV_FILE_REGEX, env['name']) is not None:
-            plugin_env_urls.append(env['download_url'])
-
-    if plugin_env_urls == []:
-        raise ValueError(f'No QIIME 2 environment files found for repo: {yml["owner"]}:{yml["name"]}')
+        if plugin_env_urls == []:
+            raise ValueError(f'No QIIME 2 environment files found for repo: {yml["owner"]}:{yml["name"]}.')
+    else:
+        raise ValueError(f'No environment-files directory found in repo: {yml["owner"]}:{yml["name"]}.\nGot response {response.json()}')
 
     return plugin_env_urls
 
