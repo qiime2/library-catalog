@@ -11,13 +11,17 @@ KEY_SET = set(['owner', 'name', 'branch', 'docs'])
 ENV_FILE_REGEX = '.*-qiime2-.*-20[0-9][0-9]\.([1-9]|1[0-2])\.yml'
 GITHUB_BASE_URL = "https://api.github.com"
 
-env_urls = []
-
 GITHUB_TOKEN = sys.argv[1]
 GITHUB_BASE_URL = 'https://api.github.com'
 
 
+# TODO:
+# 1. Yell if there is no description
+# 2. Yell if there is no README
+# 3. Yell if there are no env files
 def lint(yml):
+    plugin_env_urls = []
+
     # Assert corrrect keys
     assert set(yml.keys()) == KEY_SET
 
@@ -46,12 +50,19 @@ def lint(yml):
     # track of its download URL
     for env in envs:
         if re.search(ENV_FILE_REGEX, env['name']) is not None:
-            env_urls.append(env['download_url'])
+            plugin_env_urls.append(env['download_url'])
+
+    if plugin_env_urls == []:
+        raise ValueError(f'No QIIME 2 environment files found for repo: {yml["owner"]}:{yml["name"]}')
+
+    return plugin_env_urls
 
 
 if __name__ == "__main__":
     GITHUB_TOKEN = sys.argv[1]
     files = sys.argv[2:]
+
+    all_env_urls = []
 
     for file in files:
         head, tail = os.path.split(file)
@@ -61,7 +72,7 @@ if __name__ == "__main__":
         if head == DIR:
             with open(file, 'r') as fh:
                 yml = yaml.safe_load(fh)
-                lint(yml)
+                all_env_urls.extend(lint(yml))
 
     with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-        fh.write(f'ENV_FILES={env_urls}\n')
+        fh.write(f'ENV_FILES={all_env_urls}\n')
