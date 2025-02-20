@@ -33,11 +33,14 @@ jobs:
           } >> "$GITHUB_ENV"
 
       # Lint all plugins/** files in diff (filtering of diff occurs in Python)
+      # Also gets all env files in added plugins for env testing
       - name: Lint Yml and Get Env Files
         id: lint
         run: python .github/scripts/lint.py ${{ secrets.GITHUB_TOKEN }} $DIFF
 
-  lint-envs:
+  # Install all envs found and at least make sure `qiime info` runs
+  # TODO: Make this attempt to run pytest?
+  test-envs:
     needs: lint-yml
     strategy:
       matrix:
@@ -56,6 +59,7 @@ jobs:
           auto-activate-base: true
           miniconda-version: 'latest'
 
+      # Hacky stff to make it so I can activate the conda env for testing
       - name: Set up Test Environment
         env:
           url: ${{ matrix.url }}
@@ -74,11 +78,7 @@ jobs:
           conda activate ${{ env.prefix }}
           qiime info
 
-# Lint all files in plugins
-  # If anything outside of plugins is changed then fail?
-
 # Grab the target repo and validate it?
   # Description?
   # README?
   # Env files?
-
