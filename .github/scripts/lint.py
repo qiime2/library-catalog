@@ -50,7 +50,7 @@ def _lint_yml(file):
 # Make sure the repo exists and has a description
 def _check_description(base_url, base_query_params, repo_name):
     response = requests.get(
-        base_url, header=GITHUB_HEADERS, params=base_query_params)
+        base_url, headers=GITHUB_HEADERS, params=base_query_params)
 
     if not response.ok:
         raise ValueError(f'Failed to get repo: {repo_name}.\n'
