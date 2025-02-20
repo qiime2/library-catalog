@@ -52,6 +52,9 @@ def lint(yml):
         if re.search(ENV_FILE_REGEX, env['name']) is not None:
             plugin_env_urls.append(env['download_url'])
 
+    if plugin_env_urls == []:
+        raise ValueError(f'No QIIME 2 environment files found for repo: {yml["owner"]}:{yml["name"]}')
+
     return plugin_env_urls
 
 
