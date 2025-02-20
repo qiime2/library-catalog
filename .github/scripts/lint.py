@@ -8,7 +8,7 @@ import requests
 DIR = 'plugins'
 
 KEY_SET = set(['owner', 'name', 'branch', 'docs'])
-ENV_FILE_REGEX = '.*-qiime2-.*-20[0-9][0-9]\.([1-9]|1[0-2])\.yml'
+ENV_FILE_REGEX = r'.*-qiime2-.*-20[0-9][0-9]\.([1-9]|1[0-2])\.yml'
 GITHUB_BASE_URL = "https://api.github.com"
 
 GITHUB_TOKEN = sys.argv[1]
