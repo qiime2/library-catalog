@@ -47,6 +47,20 @@ def _lint_yml(file):
     return yml
 
 
+# Make sure the repo exists and has a description
+def _check_description(base_url, base_query_params, repo_name):
+    response = requests.get(
+        base_url, header=GITHUB_HEADERS, params=base_query_params)
+
+    if not response.ok:
+        raise ValueError(f'Failed to get repo: {repo_name}.\n'
+                         f'Got response {response.json()}')
+
+    repo_overview = response.json()
+    if repo_overview['data']['description'] == '':
+        raise ValueError(f'No description found for repo: {repo_name}')
+
+
 # Make sure the repo has a README
 def _check_readme(base_url, base_query_params, repo_name):
     readme_url =f'{base_url}/readme'
@@ -116,6 +130,7 @@ if __name__ == "__main__":
                 'ref': yml['branch'],
             }
 
+            _check_description(base_url, base_query_params, repo_name)
             _check_readme(base_url, base_query_params, repo_name)
             plugin_env_urls = \
                 _get_env_files(base_url, base_query_params, repo_name)
