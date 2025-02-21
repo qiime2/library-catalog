@@ -57,8 +57,7 @@ def _check_description(base_url, base_query_params, repo_name):
                          f'Got response {response.json()}')
 
     repo_overview = response.json()
-    print(repo_overview)
-    if repo_overview['data']['description'] == '':
+    if repo_overview['description'] is None:
         raise ValueError(f'No description found for repo: {repo_name}')
 
 
