@@ -18,10 +18,6 @@ GITHUB_HEADERS = {
     'X-GitHub-Api-Version': '2022-11-28'
 }
 
-# TODO:
-# 1. Yell if there is no description
-# 2. Yell if there is no README X
-# 3. Yell if there are no env files X
 
 # Load yml, lint it, return loaded yaml if it passes lint
 def _lint_yml(file):
