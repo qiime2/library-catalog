@@ -1,0 +1,4 @@
+docs: https://develop.qiime2.org/en/latest/
+title: 'Developing with QIIME 2'
+description: 'Your guide for writing, testing, and distributing QIIME 2 plugins, interfaces, and documentation.'
+audience: developers
