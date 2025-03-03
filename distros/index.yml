@@ -1,0 +1,16 @@
+index:
+  - name: amplicon
+    source: https://github.com/qiime2/distributions
+    docs: https://amplicon-docs.readthedocs.io/en/latest/
+
+  - name: moshpit
+    source: https://github.com/qiime2/distributions
+    docs: https://bokulich-lab.github.io/moshpit-docs/
+
+  - name: pathogenome
+    source: https://github.com/qiime2/distributions
+    docs: null
+
+  - name: tiny
+    source: https://github.com/qiime2/distributions
+    docs: null

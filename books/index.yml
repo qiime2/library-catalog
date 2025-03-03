@@ -1,0 +1,22 @@
+index:
+  - url: https://use.qiime2.org/en/latest/
+    source: https://github.com/caporaso-lab/using-qiime2
+    title: 'Using QIIME 2'
+    description: 'Your guide to becoming a QIIME 2 Framework power user.'
+    type: book
+    order: 0
+
+  - url: https://develop.qiime2.org/en/latest/
+    source: https://github.com/caporaso-lab/developing-with-qiime2
+    title: 'Developing with QIIME 2'
+    description: 'Your guide for writing, testing, and distributing QIIME 2 plugins, interfaces, and documentation.'
+    type: book
+    order: 1
+
+  - url: https://amplicon-docs.readthedocs.io/en/latest/
+    source: https://github.com/qiime2/amplicon-docs
+    type: book
+
+  - url: https://bokulich-lab.github.io/moshpit-docs/
+    source: https://github.com/bokulich-lab/moshpit-docs/
+    type: book
