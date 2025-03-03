@@ -1,16 +1,25 @@
 index:
+
   - name: amplicon
-    source: https://github.com/qiime2/distributions
+    title: Amplicon
     docs: https://amplicon-docs.readthedocs.io/en/latest/
+    description: |
+      A suite of plugins that provide broad analytic functionality to support microbiome marker gene analysis from raw sequencing data through publication quality visualizations and statistics.
 
   - name: moshpit
-    source: https://github.com/qiime2/distributions
+    title: MOSHPIT
     docs: https://bokulich-lab.github.io/moshpit-docs/
+    description: |
+      MOSHPIT (MOdular SHotgun metagenome Pipelines with Integrated provenance Tracking) is a toolkit of plugins for whole metagenome assembly, annotation, and analysis.
 
   - name: pathogenome
-    source: https://github.com/qiime2/distributions
+    title: Pathogenome
     docs: null
+    description: |
+      A suite of plugins to detect viral genomes and protein sequences from MAGs and contigs for antimicrobial-resistance.
 
   - name: tiny
-    source: https://github.com/qiime2/distributions
+    title: Tiny
     docs: null
+    description: |
+      A minimal installation of the QIIME 2 Framework for developers that is intended to be extended with custom functionality and plugins.
