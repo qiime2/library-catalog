@@ -1,12 +1,14 @@
 index:
 
   - name: amplicon
+    alt: core
     title: Amplicon
     docs: https://amplicon-docs.readthedocs.io/en/latest/
     description: |
       A suite of plugins that provide broad analytic functionality to support microbiome marker gene analysis from raw sequencing data through publication quality visualizations and statistics.
 
   - name: moshpit
+    alt: metagenome
     title: MOSHPIT
     docs: https://bokulich-lab.github.io/moshpit-docs/
     description: |
