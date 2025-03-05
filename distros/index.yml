@@ -1,5 +1,4 @@
 index:
-
   - name: amplicon
     alt: core
     title: Amplicon
@@ -25,3 +24,10 @@ index:
     docs: null
     description: |
       A minimal installation of the QIIME 2 Framework for developers that is intended to be extended with custom functionality and plugins.
+
+ignore:
+  - qiime2
+  - q2cli
+  - q2galaxy
+  - q2templates
+  - MOSHPIT
