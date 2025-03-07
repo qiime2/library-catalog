@@ -12,11 +12,3 @@ index:
     description: 'Your guide for writing, testing, and distributing QIIME 2 plugins, interfaces, and documentation.'
     type: book
     order: 1
-
-  - url: https://amplicon-docs.readthedocs.io/en/latest/
-    source: https://github.com/qiime2/amplicon-docs
-    type: book
-
-  - url: https://bokulich-lab.github.io/moshpit-docs/
-    source: https://github.com/bokulich-lab/moshpit-docs/
-    type: book
