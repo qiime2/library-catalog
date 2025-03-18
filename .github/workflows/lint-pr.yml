@@ -7,6 +7,7 @@ on:
       - 'main'
     paths:
       - 'plugins/**.yml'
+  workflow_dispatch:
 
 jobs:
   lint-yml:
