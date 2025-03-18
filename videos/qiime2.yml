@@ -1,0 +1,4 @@
+provider: youtube
+type: rss
+url: https://www.youtube.com/feeds/videos.xml?channel_id=UCgjZXjHOjV-KbkXsnuMKoUA
+title: Recent Uploads by QIIME 2
