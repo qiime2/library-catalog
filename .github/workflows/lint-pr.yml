@@ -79,8 +79,3 @@ jobs:
           source ${{ env.prefix }}/etc/activate.sh
           conda activate ${{ env.prefix }}
           qiime info
-
-# Grab the target repo and validate it?
-  # Description?
-  # README?
-  # Env files?
