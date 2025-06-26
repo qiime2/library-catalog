@@ -1,0 +1,5 @@
+{
+  "title": "Volatility Control Chart",
+  "desc": "Explore interactive line plots to assess how volatile a dependent variable is over a continuous, independent variable in one or more groups.",
+  "href": "https://docs.qiime2.org/2024.2/data/tutorials/longitudinal/volatility.qzv"
+}
