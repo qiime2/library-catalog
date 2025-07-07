@@ -33,4 +33,4 @@ jobs:
           git config --global user.name 'q2d2'
           git config --global user.email 'q2d2@noreply@gmail.com'
           cd $GITHUB_WORKSPACE/q2view
-          git push origin
+          git push origin issue-22
