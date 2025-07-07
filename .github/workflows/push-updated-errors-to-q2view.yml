@@ -1,0 +1,34 @@
+name: push-updated-errors-to-q2view
+
+# Run any time new errors are pushed to main
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'errors/**'
+  workflow_dispatch:
+
+jobs:
+  push-error-list:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: 'qiime2/q2view'
+          sparse-checkout: 'static/errors/'
+          fetch-depth: 1
+
+      - name: Copy new errors
+        run: |
+          rm -r ${{ GITUB_WORKSPACE }}/q2view/static/errors
+          cp -r ./errors  ${{ GITHUB_WORKSPACE }}/q2view/static
+
+      - name: Push updated error list to view
+        run: |
+          git config --global user.name 'q2d2'
+          git config --global user.email 'q2d2@noreply@gmail.com'
+          cd ${{ GITHUB_WORKSPACE }}/q2view
+          git push origin
