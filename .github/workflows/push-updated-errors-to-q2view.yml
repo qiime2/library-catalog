@@ -29,6 +29,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'qiime2/q2view'
+          token: ${{ secrets.BOT_PAT }}
           ref: 'issue-22'
           path: './q2view'
           sparse-checkout: 'static/errors/'
