@@ -37,7 +37,6 @@ jobs:
 
       - name: Copy new errors
         run: |
-          ls .
           rm -r ./q2view/static/errors
           cp -r ./library-catalog/errors  ./q2view/static/
 
