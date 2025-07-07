@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checout self
+      - name: Checkout self
         uses: actions/checkout@v4
         with:
           ref: 'add-error-tracker'
