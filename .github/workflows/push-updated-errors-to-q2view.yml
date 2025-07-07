@@ -20,6 +20,7 @@ jobs:
           repository: 'qiime2/q2view'
           ref: 'issue-22'
           sparse-checkout: 'static/errors/'
+          sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
       - name: Copy new errors
