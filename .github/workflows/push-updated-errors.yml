@@ -1,0 +1,22 @@
+name: Push the updated list of errors to q2view
+
+# Run any time new errors are pushed to main
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'errors/**'
+  workflow_dispatch:
+
+jobs:
+  push-error-list:
+    name: Push updated error list to view
+    uses: nkoppel/push-files-to-another-repository@v1.1.4
+    env:
+      API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+    with:
+      source-files: 'errors/'
+      destination-username: 'qiime2'
+      destination-repository: 'q2view'
+      destination-directory: 'static/'
