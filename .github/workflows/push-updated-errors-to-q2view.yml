@@ -27,6 +27,7 @@ jobs:
         run: |
           ls $GITHUB_WORKSPACE
           rm -r $GITHUB_WORKSPACE/static/errors
+          ls .
           cp -r ./errors  $GITHUB_WORKSPACE/static
 
       - name: Push updated error list to view
