@@ -1,3 +1,5 @@
+# TODO: This needs a PAT set up on the qiime2 GitHub account to facilitate this
+# action pushing to q2view from library-catalog
 name: push-updated-errors-to-q2view
 
 # Run any time new errors are pushed to main
@@ -8,9 +10,6 @@ on:
     paths:
       - 'errors/**'
   workflow_dispatch:
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   push-error-list:
@@ -47,6 +46,5 @@ jobs:
           git config --global user.name 'q2d2'
           git config --global user.email 'q2d2@noreply@gmail.com'
           cd ./q2view
-          git remote set-url --push origin https://qiime2:$GITHUB_TOKEN@github.com/qiime2/q2view
           git commit -am "Updating errors"
           git push origin issue-22
