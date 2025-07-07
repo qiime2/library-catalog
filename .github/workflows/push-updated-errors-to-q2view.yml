@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'qiime2/q2view'
+          ref: 'issue-22'
           sparse-checkout: 'static/errors/'
           fetch-depth: 1
 
