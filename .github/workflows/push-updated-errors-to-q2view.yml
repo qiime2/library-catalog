@@ -14,25 +14,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checout self
+        uses: actions/checkout@v4
+        with:
+          ref: 'add-error-tracker'
+          path: './library-catalog'
+          sparse-checkout: 'errors/'
+          sparse-checkout-cone-mode: 'false'
+          fetch-depth: 1
+
+      - name: Checkout q2view
         uses: actions/checkout@v4
         with:
           repository: 'qiime2/q2view'
           ref: 'issue-22'
+          path: './q2view'
           sparse-checkout: 'static/errors/'
           sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
       - name: Copy new errors
         run: |
-          ls $GITHUB_WORKSPACE
-          rm -r $GITHUB_WORKSPACE/static/errors
           ls .
-          cp -r ./errors  $GITHUB_WORKSPACE/static
+          rm -r ./q2view/static/errors
+          cp -r ./library-catalog/errors  ./q2view/static/static
 
       - name: Push updated error list to view
         run: |
           git config --global user.name 'q2d2'
           git config --global user.email 'q2d2@noreply@gmail.com'
-          cd $GITHUB_WORKSPACE
+          cd ./q2view
+          git add .
+          git commit -m "Updating errors"
           git push origin issue-22
