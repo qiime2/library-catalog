@@ -1,4 +1,4 @@
-name: Push the updated list of errors to q2view
+name: push-updated-errors-to-q2view
 
 # Run any time new errors are pushed to main
 on:
