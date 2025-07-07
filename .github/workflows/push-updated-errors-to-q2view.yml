@@ -46,7 +46,7 @@ jobs:
         run: |
           git config --global user.name 'q2d2'
           git config --global user.email 'q2d2@noreply@gmail.com'
-          git remote set-url --push origin https://qiime2:$GITHUB_TOKEN@github.com/qiime2/q2view
           cd ./q2view
+          git remote set-url --push origin https://qiime2:$GITHUB_TOKEN@github.com/qiime2/q2view
           git commit -am "Updating errors"
           git push origin issue-22
