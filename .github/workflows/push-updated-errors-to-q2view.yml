@@ -23,6 +23,7 @@ jobs:
 
       - name: Copy new errors
         run: |
+          ls $GITHUB_WORKSPACE
           rm -r $GITHUB_WORKSPACE/q2view/static/errors
           cp -r ./errors  $GITHUB_WORKSPACE/q2view/static
 
