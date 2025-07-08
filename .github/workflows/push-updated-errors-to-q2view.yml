@@ -34,7 +34,7 @@ jobs:
           sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
-      - nam"e: Copy new errors
+      - name: Copy new errors
         run: |
           rm -r ./q2view/static/errors
           cp -r ./library-catalog/errors ./q2view/static/
