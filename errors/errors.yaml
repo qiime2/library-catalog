@@ -7,6 +7,9 @@
 #       sampled in a valid way
 # Severity 2: Error potentially renders result unusable
 #   ex. A metric was calculated incorrectly
+#
+# Date is the date you are adding the error to this list not necessarily the
+# date the error was discovered
 
 [
   {
