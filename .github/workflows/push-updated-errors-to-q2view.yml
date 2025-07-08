@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+        # Checkout the latest errors in library catalog
       - name: Checkout self
         uses: actions/checkout@v4
         with:
@@ -23,6 +24,8 @@ jobs:
           sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
+        # Checkout the stale errors from q2view. Make sure to use the PAT so we
+        # have permission to push later
       - name: Checkout q2view
         uses: actions/checkout@v4
         with:
@@ -34,11 +37,14 @@ jobs:
           sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
+        # Remove the stale errors from q2view and copy over the new ones from
+        # library catalog
       - name: Copy new errors
         run: |
           rm -r ./q2view/static/errors
           cp -r ./library-catalog/errors ./q2view/static/
 
+        # Push the new errors up to q2view
       - name: Push updated error list to view
         run: |
           git config --global user.name 'q2d2'
