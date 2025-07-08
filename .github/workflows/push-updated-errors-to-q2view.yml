@@ -1,5 +1,3 @@
-# TODO: This needs a PAT set up on the qiime2 GitHub account to facilitate this
-# action pushing to q2view from library-catalog
 name: push-updated-errors-to-q2view
 
 # Run any time new errors are pushed to main
