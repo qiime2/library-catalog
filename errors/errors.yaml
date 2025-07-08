@@ -79,10 +79,10 @@
   {
     name: "Incorrect chimera classification",
     severity: 1,
-    query: '(plugin: "q2-vsearch" AND action: "uchime-denovo") AND (q2-vsearch:
+    query: '(plugin: "q2-vsearch" AND action: "uchime-denovo") AND q2-vsearch:
       (^"2023.9" OR
       ^"2024.2" OR
-      ^"2024.5"))',
+      ^"2024.5")',
     date: "2025-07-08",
     description:
       "Affected versions of the vsearch dependency of q2-vsearch incorrectly
