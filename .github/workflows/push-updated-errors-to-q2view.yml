@@ -4,7 +4,7 @@ name: push-updated-errors-to-q2view
 on:
   push:
     branches:
-      - 'add-error-tracker"'
+      - 'add-error-tracker'
     paths:
       - 'errors/**'
   workflow_dispatch:
