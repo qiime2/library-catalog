@@ -1,6 +1,7 @@
 // TODO: If the parser is ever updated this will need to be updated as well
 import yaml from "js-yaml"
 import fs from "fs";
+import path from "path";
 import { get_parser } from "./parser.js";
 
 const readBlobAsText = (blob) =>
