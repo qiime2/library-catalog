@@ -22,7 +22,7 @@ jobs:
           path: './library-catalog'
           sparse-checkout: |
             errors/
-            .github/scripts/errors/
+            .github/
           sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
