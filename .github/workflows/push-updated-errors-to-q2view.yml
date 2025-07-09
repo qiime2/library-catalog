@@ -29,6 +29,8 @@ jobs:
         # Install node to be used by linter
       - name: Setup Node For Linter
         uses: actions/setup-node@v4
+        with:
+          node-version: "20.5.1"
 
         # Install node deps
       - name: Install node deps
