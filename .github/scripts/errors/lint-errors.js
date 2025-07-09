@@ -15,7 +15,7 @@ const readBlobAsText = (blob) =>
 });
 
 const PARSER = get_parser();
-const ERROR_DIR = "/errors";
+const ERROR_DIR = "./library-catalog/errors";
 const ERROR_FILES = await fs.promises.readdir(ERROR_DIR);
 const EXPECTED_KEYS = new Set("name", "query", "date", "description");
 
