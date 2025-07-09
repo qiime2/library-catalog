@@ -20,7 +20,9 @@ jobs:
         with:
           ref: 'add-error-tracker'
           path: './library-catalog'
-          sparse-checkout: 'errors/'
+          sparse-checkout: |
+            'errors/'
+            '.github/scripts/errors'
           sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
