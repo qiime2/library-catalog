@@ -24,6 +24,27 @@ jobs:
           sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
+
+        # Install node to be used by linter
+      - name: Setup Node For Linter
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.5.1"
+
+        # Install node deps
+      - name: Install node deps
+        run: |
+          npm install js-yaml
+          npm install prettier
+
+        # Lint error lists before pushing them
+      - name: Lint errors
+        run: node .github/scripts/errors/lint-errors.js
+
+        # Pretty up errors if they passed the checks
+      - name: Format errors
+        run: npx prettier --plugin-search-dir errors/ --write errors/
+
         # Checkout the stale errors from q2view. Make sure to use the PAT so we
         # have permission to push later
       - name: Checkout q2view
