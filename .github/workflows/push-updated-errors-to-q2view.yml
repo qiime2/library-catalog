@@ -35,13 +35,12 @@ jobs:
         # Install node deps
       - name: Install node deps
         run: |
-          ls ./library-catalog
           npm install js-yaml
           npm install prettier
 
         # Lint error lists before pushing them
       - name: Lint errors
-        run: node ./library-catalog/.github/scripts/errors/lint-errors.js
+        run: node library-catalog/.github/scripts/errors/lint-errors.js
 
         # Pretty up errors if they passed the checks
       - name: Format errors
