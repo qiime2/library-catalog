@@ -50,5 +50,6 @@ jobs:
           git config --global user.name 'q2d2'
           git config --global user.email 'q2d2@noreply@gmail.com'
           cd ./q2view
-          git commit -am "Updating errors"
+          git add .
+          git commit -m "Updating errors"
           git push origin issue-22
