@@ -32,10 +32,12 @@ for (const file of ERROR_FILES) {
 
     for (const loaded_error of loaded_yaml) {
         // Make sure all errors in the file have the correct keys
-        if (new Set(Object.keys(loaded_error)).difference(EXPECTED_KEYS).size !== 0) {
+        const found_keys = new Set(Object.keys(loaded_error));
+
+        if (found_keys.difference(EXPECTED_KEYS).size !== 0) {
             throw new Error(`The error:\n\n${loaded_error}\n\nFrom the file '${file}'
                 does not contain the expected keys.\n\nExpected keys are:
-                ${EXPECTED_KEYS}\nKeys found: ${new Set(Object.keys(loaded_error))}`);
+                ${EXPECTED_KEYS}\nKeys found: ${found_keys}`);
         }
 
         // Make sure all queries in the file can be parsed
