@@ -25,7 +25,7 @@ for (const file of ERROR_FILES) {
 
     // Make sure the file loads as yaml
     try {
-        loaded_yaml = yaml.safeLoad(path.join(ERROR_DIR, file));
+        loaded_yaml = yaml.load(path.join(ERROR_DIR, file));
     } catch (error) {
         throw new Error(`The file '${file}' failed to parse as yaml:\n\n${error.message}`);
     }
