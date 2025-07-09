@@ -40,7 +40,7 @@ jobs:
 
         # Lint error lists before pushing them
       - name: Lint errors
-        run: node library-catalog/.github/scripts/errors/lint-errors.js
+        run: node .github/scripts/errors/lint-errors.js
 
         # Pretty up errors if they passed the checks
       - name: Format errors
