@@ -1,6 +1,6 @@
 // TODO: If the parser is ever updated this will need to be updated as well
 import yaml from "js-yaml"
-import { get_parser } from "./parser";
+import { get_parser } from "./parser.js";
 
 const readBlobAsText = (blob) =>
   new Promise((resolve, reject) => {
