@@ -30,17 +30,17 @@ for (const file of ERROR_FILES) {
         throw new Error(`The file '${file}' failed to parse as yaml:\n\n${error.message}`);
     }
 
-    for (const error of loaded_yaml) {
+    for (const loaded_error of loaded_yaml) {
         // Make sure all errors in the file have the correct keys
-        if (new Set(Object.keys(error)).difference(EXPECTED_KEYS).size !== 0) {
-            throw new Error(`The error:\n\n${error}\n\nFrom the file '${file}'
+        if (new Set(Object.keys(loaded_error)).difference(EXPECTED_KEYS).size !== 0) {
+            throw new Error(`The error:\n\n${loaded_error}\n\nFrom the file '${file}'
                 does not contain the expected keys.\n\nExpected keys are:
-                ${EXPECTED_KEYS}\nKeys found: ${new Set(Object.keys(error))}`);
+                ${EXPECTED_KEYS}\nKeys found: ${new Set(Object.keys(loaded_error))}`);
         }
 
         // Make sure all queries in the file can be parsed
         try {
-            PARSER.parse(error.query);
+            PARSER.parse(loaded_error.query);
         } catch (error) {
             throw new Error(`The error:\n\n${error}\n\nFrom the file '${file}'
                 failed to parse.\n\n${error.message}`);
