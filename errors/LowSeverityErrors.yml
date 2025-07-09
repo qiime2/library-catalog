@@ -4,13 +4,13 @@
 [
   {
     name: "NaNs in summarize viz",
-    query: 'plugin "q2-demux" AND action: "summarize" AND q2-demux: ^"2023.9.0"$',
+    query: 'plugin: "q2-demux" AND action: "summarize" AND q2-demux: ^"2023.9.0"$',
     date: "2025-07-09",
     description:
       "demux summarize visualizations produced with q2-demux 2023.9.0 are
       invalid and likely to be full of NaNs. Please regenerate this viz with a
       different version of QIIME 2. See this forum post for more detials:
-      https://forum.qiime2.org/t/nan-values-in-demultiplexed-sequence-counts-summary/28006"
+      https://forum.qiime2.org/t/nan-values-in-demultiplexed-sequence-counts-summary/28006",
   },
   {
     name: "Nondeterministic inclusion of poor alignments",
