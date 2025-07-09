@@ -32,6 +32,9 @@ jobs:
         with:
           node-version: "20.5.1"
 
+      - name: lame
+        run: ls
+
         # Install node deps
       - name: Install node deps
         run: |
