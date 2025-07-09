@@ -35,6 +35,8 @@ jobs:
         # Install node deps
       - name: Install node deps
         run: |
+          ls ./library-catalog
+          ls ./library-catalog/.github
           npm install js-yaml
           npm install prettier
 
