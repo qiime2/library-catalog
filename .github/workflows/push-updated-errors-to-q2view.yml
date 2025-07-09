@@ -38,10 +38,8 @@ jobs:
         # Install node deps
       - name: Install node deps
         run: |
-          cd ./library-catalog/.github/scripts/errors
           npm install js-yaml
           npm install prettier
-          cd ../../../../
 
         # Lint error lists before pushing them
       - name: Lint errors
