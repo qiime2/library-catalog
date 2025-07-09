@@ -20,10 +20,6 @@ jobs:
         with:
           ref: 'add-error-tracker'
           path: './library-catalog'
-          sparse-checkout: |
-            errors/
-            .github/
-          sparse-checkout-cone-mode: 'false'
           fetch-depth: 1
 
         # Install node to be used by linter
