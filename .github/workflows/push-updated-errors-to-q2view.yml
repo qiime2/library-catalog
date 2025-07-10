@@ -60,7 +60,8 @@ jobs:
       - name: Copy new errors
         run: |
           rm ./q2view/static/errors/*
-          npx prettier ./library-catalog/errors/ --write ./q2view/static/errors/
+          cp ./library-catalog/errors/* ./q2view/static/errors/
+          npx prettier ./q2view/static/errors/ --write
 
         # Push the new errors up to q2view
       - name: Push updated error list to view
