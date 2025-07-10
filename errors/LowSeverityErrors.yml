@@ -38,7 +38,7 @@
     query: 'plugin: "q2-diversity-lib" AND action: "faith-pd" AND q2-diversity-lib:
       (^"2022.8" OR
       ^"2022.11" OR
-      ^"2023"
+      ^"2023" OR
       ^"2024.2" OR
       ^"2024.5")',
     date: "2025-07-10",
