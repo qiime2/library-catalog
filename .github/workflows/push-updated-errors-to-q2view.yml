@@ -42,10 +42,6 @@ jobs:
       - name: Lint errors
         run: node ./library-catalog/.github/scripts/errors/lint-errors.js
 
-        # Pretty up errors if they passed the checks
-      - name: Format errors
-        run: npx prettier --plugin-search-dir ./library-catalog/errors --write ./library-catalog/errors
-
         # Checkout the stale errors from q2view. Make sure to use the PAT so we
         # have permission to push later
       - name: Checkout q2view
@@ -60,11 +56,11 @@ jobs:
           fetch-depth: 1
 
         # Remove the stale errors from q2view and copy over the new ones from
-        # library catalog
+        # library catalog all prettied up
       - name: Copy new errors
         run: |
-          rm -r ./q2view/static/errors
-          cp -r ./library-catalog/errors ./q2view/static/
+          rm  ./q2view/static/errors/*
+          npx prettier --plugin-search-dir ./library-catalog/errors --write ./q2view/static/errors
 
         # Push the new errors up to q2view
       - name: Push updated error list to view
