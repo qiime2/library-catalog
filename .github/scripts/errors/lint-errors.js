@@ -6,7 +6,7 @@ import { get_parser } from "./parser.js";
 
 const PARSER = get_parser();
 const ERROR_DIR = "./library-catalog/errors";
-const ERROR_FILES = await fs.promises.readdir(ERROR_DIR);
+const ERROR_FILES = fs.readdirSync(ERROR_DIR);
 const EXPECTED_KEYS = new Set("name", "query", "date", "description");
 
 function setsEqual(setA, setB) {
@@ -19,7 +19,7 @@ for (const file of ERROR_FILES) {
 
     // Make sure the file loads as yaml
     try {
-        await fs.readFile(path.join(ERROR_DIR, file), 'utf8', (error, data) => {
+        fs.readFileSync(path.join(ERROR_DIR, file), 'utf8', (error, data) => {
             if (error) {
                 throw error;
             }
