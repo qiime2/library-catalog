@@ -36,8 +36,8 @@ for (const file of ERROR_FILES) {
         // Make sure all errors in the file have the correct keys
         const found_keys = new Set(Object.keys(loaded_error));
 
-        if (EXPECTED_KEYS.size === found_keys.size &&
-                [...EXPECTED_KEYS].every(value => found_keys.has(value))) {
+        if (EXPECTED_KEYS.size !== found_keys.size ||
+                ![...EXPECTED_KEYS].every(value => found_keys.has(value))) {
             throw new Error(`The error:\n\n${loaded_error}\n\nFrom the file '${file}'
                 does not contain the expected keys.\n\nExpected keys are:
                 ${EXPECTED_KEYS}\nKeys found: ${found_keys}`);
