@@ -4,21 +4,15 @@ import fs from "fs";
 import path from "path";
 import { get_parser } from "./parser.js";
 
-const readBlobAsText = (blob) =>
-  new Promise((resolve, reject) => {
-    // eslint-disable-line no-unused-vars
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      // eslint-disable-line no-unused-vars
-      resolve(reader.result);
-    };
-    reader.readAsText(blob, "utf8");
-});
-
 const PARSER = get_parser();
 const ERROR_DIR = "./library-catalog/errors";
 const ERROR_FILES = await fs.promises.readdir(ERROR_DIR);
 const EXPECTED_KEYS = new Set("name", "query", "date", "description");
+
+function setsEqual(setA, setB) {
+    return setA.size === setB.size &&
+                [...setA].every(value => setB.has(value));
+}
 
 for (const file of ERROR_FILES) {
     let loaded_yaml;
@@ -36,8 +30,7 @@ for (const file of ERROR_FILES) {
         // Make sure all errors in the file have the correct keys
         const found_keys = new Set(Object.keys(loaded_error));
 
-        if (EXPECTED_KEYS.size !== found_keys.size ||
-                ![...EXPECTED_KEYS].every(value => found_keys.has(value))) {
+        if (!setsEqual(EXPECTED_KEYS, found_keys)) {
             throw new Error(`The error:\n\n${loaded_error}\n\nFrom the file '${file}'
                 does not contain the expected keys.\n\nExpected keys are:
                 ${EXPECTED_KEYS}\nKeys found: ${found_keys}`);
