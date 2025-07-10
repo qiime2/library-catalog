@@ -59,8 +59,8 @@ jobs:
         # library catalog all prettied up
       - name: Copy new errors
         run: |
-          rm  ./q2view/static/errors/*
-          npx prettier --plugin-search-dir ./library-catalog/errors/ --write ./q2view/static/errors/
+          rm ./q2view/static/errors/*
+          npx prettier ./library-catalog/errors/ --write ./q2view/static/errors/
 
         # Push the new errors up to q2view
       - name: Push updated error list to view
