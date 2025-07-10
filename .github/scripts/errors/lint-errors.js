@@ -7,7 +7,7 @@ import { get_parser } from "./parser.js";
 const PARSER = get_parser();
 const ERROR_DIR = "./library-catalog/errors";
 const ERROR_FILES = fs.readdirSync(ERROR_DIR);
-const EXPECTED_KEYS = new Set("name", "query", "date", "description");
+const EXPECTED_KEYS = new Set(["name", "query", "date", "description"]);
 
 function setsEqual(setA, setB) {
     return setA.size === setB.size &&
@@ -19,20 +19,10 @@ for (const file of ERROR_FILES) {
 
     // Make sure the file loads as yaml
     try {
-        fs.readFileSync(path.join(ERROR_DIR, file), 'utf8', (error, data) => {
-            if (error) {
-                throw error;
-            }
-
-            console.log(data)
-            loaded_yaml = yaml.load(data);
-            console.log(loaded_yaml)
-        })
+        loaded_yaml = yaml.load(fs.readFileSync(path.join(ERROR_DIR, file), 'utf8'));
     } catch (error) {
         throw new Error(`The file '${file}' failed to parse as yaml:\n\n${error.message}`);
     }
-
-    console.log(loaded_yaml)
 
     for (const loaded_error of loaded_yaml) {
         // Make sure all errors in the file have the correct keys
@@ -45,12 +35,10 @@ for (const file of ERROR_FILES) {
         }
 
         // Make sure all queries in the file can be parsed
-        console.log(loaded_error)
-        console.log(loaded_error.query)
         try {
             PARSER.parse(loaded_error.query);
         } catch (error) {
-            throw new Error(`The error:\n\n${error}\n\nFrom the file '${file}'
+            throw new Error(`The query '${loaded_error.query}' for the error '${loaded_error.name}' from the file: '${file}'
                 failed to parse.\n\n${error.message}`);
         }
     }
