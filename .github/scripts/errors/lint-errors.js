@@ -19,7 +19,13 @@ for (const file of ERROR_FILES) {
 
     // Make sure the file loads as yaml
     try {
-        loaded_yaml = yaml.load(await fs.open(path.join(ERROR_DIR, file)));
+        await fs.readFile(path.join(ERROR_DIR, file), 'utf8', (error, data) => {
+            if (error) {
+                throw error;
+            }
+
+            loaded_yaml = yaml.load(data);
+        })
     } catch (error) {
         throw new Error(`The file '${file}' failed to parse as yaml:\n\n${error.message}`);
     }
