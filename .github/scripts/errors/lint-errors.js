@@ -24,7 +24,9 @@ for (const file of ERROR_FILES) {
                 throw error;
             }
 
+            console.log(data)
             loaded_yaml = yaml.load(data);
+            console.log(loaded_yaml)
         })
     } catch (error) {
         throw new Error(`The file '${file}' failed to parse as yaml:\n\n${error.message}`);
