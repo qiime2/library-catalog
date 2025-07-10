@@ -42,6 +42,8 @@ for (const file of ERROR_FILES) {
         }
 
         // Make sure all queries in the file can be parsed
+        console.log(loaded_error)
+        console.log(loaded_error.query)
         try {
             PARSER.parse(loaded_error.query);
         } catch (error) {
