@@ -30,6 +30,8 @@ for (const file of ERROR_FILES) {
         throw new Error(`The file '${file}' failed to parse as yaml:\n\n${error.message}`);
     }
 
+    console.log(loaded_yaml)
+
     for (const loaded_error of loaded_yaml) {
         // Make sure all errors in the file have the correct keys
         const found_keys = new Set(Object.keys(loaded_error));
