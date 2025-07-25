@@ -1,0 +1,5 @@
+{
+    "title": "Empire HMP plot",
+    "desc": "Explore an ordination plot in the context of a phylogenetic tree. This plot of the Human Microbiome Project data contains an artifact potentially arising from a low-quality phylogenetic tree. Try to identify the problematic clade in the tree.",
+    "href": "https://raw.githubusercontent.com/caporaso-lab/q2view-visualizations/main/uu-fasttree-empire.qzv"
+}

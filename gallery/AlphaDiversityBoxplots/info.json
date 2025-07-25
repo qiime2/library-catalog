@@ -1,0 +1,5 @@
+{
+  "title": "Alpha Diversity Boxplots",
+  "desc": "View the association between categorical metadata columns and alpha diversity data for Faith Phylogenetic Diversity and evenness metrics.",
+  "href": "https://docs.qiime2.org/2024.2/data/tutorials/moving-pictures/core-metrics-results/faith-pd-group-significance.qzv"
+}
