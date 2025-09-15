@@ -20,4 +20,4 @@ tutorials:
   - url: https://amf-tutorial.readthedocs.io/en/latest/
     source: https://github.com/caporaso-lab/amf-tutorial
     title: 'Arbuscular Mycorrhizal Fungi (AMF) Analysis Tutorial'
-    description: 'This tutorial was based on a Northern Arizona University Course developed Professors Manju M. Gupta, Nancy Johnson and Catherine Gehring. This tutorial was developed by the QIIME 2 Team and Dr. Manju M. Gupta to illustrate a common AMF QIIME 2 workflow'
+    description: 'This tutorial is based on a Northern Arizona University Course taught by Professors Manju M. Gupta, Nancy Johnson and Catherine Gehring. This tutorial was developed by the QIIME 2 Team and Dr. Manju M. Gupta to illustrate a common AMF QIIME 2 workflow'
