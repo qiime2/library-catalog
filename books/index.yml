@@ -16,3 +16,8 @@ tutorials:
     source: https://github.com/qiime2/cancer-microbiome-intervention-tutorial
     title: QIIME 2 Cancer Microbiome Intervention Tutorial
     description: 'This tutorial was originally developed for the 2022 NIH Foundation for Advanced Education in the Sciences Microbiome Bioinformatics with QIIME 2 workshop, taught online January 31 - February 4, 2022.'
+
+  - url: https://amf-tutorial.readthedocs.io/en/latest/
+    source: https://github.com/caporaso-lab/amf-tutorial
+    title: 'Arbuscular Mycorrhizal Fungi (AMF) Analysis Tutorial'
+    description: 'This tutorial walks you through a workflow for analyzing AMF communities with QIIME 2.'
