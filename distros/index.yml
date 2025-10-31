@@ -9,7 +9,7 @@ index:
   - name: moshpit
     alt: metagenome
     title: MOSHPIT
-    docs: https://bokulich-lab.github.io/moshpit-docs/
+    docs: https://moshpit.qiime2.org/
     description: |
       MOSHPIT (MOdular SHotgun metagenome Pipelines with Integrated provenance Tracking) is a toolkit of plugins for whole metagenome assembly, annotation, and analysis.
 
