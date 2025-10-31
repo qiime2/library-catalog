@@ -1,0 +1,5 @@
+{
+  "title": "Example Report",
+  "desc": "Explore a QIIME 2 Report consolidating multiple interactive visualizations presenting the gut-to-soil microbiome axis.",
+  "href": "https://raw.githubusercontent.com/caporaso-lab/q2view-visualizations/main/g2s-report.qzv"
+}
