@@ -1,11 +1,11 @@
 books:
-  - url: https://use.qiime2.org/en/latest/
+  - url: https://use.qiime2.org/en/stable/
     source: https://github.com/caporaso-lab/using-qiime2
     title: 'Using QIIME 2'
     description: 'Your guide to becoming a QIIME 2 Framework power user.'
     order: 0
 
-  - url: https://develop.qiime2.org/en/latest/
+  - url: https://develop.qiime2.org/en/stable/
     source: https://github.com/caporaso-lab/developing-with-qiime2
     title: 'Developing with QIIME 2'
     description: 'Your guide for writing, testing, and distributing QIIME 2 plugins, interfaces, and documentation.'
