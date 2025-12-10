@@ -1,6 +1,6 @@
 index:
   - name: qiime2
-    alt: amplicon
+    alt: [core, amplicon]
     title: QIIME 2
     docs: https://amplicon-docs.readthedocs.io/en/stable/
     description: |
