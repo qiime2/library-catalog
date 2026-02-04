@@ -3,8 +3,6 @@ name: push-updated-errors-to-q2view
 # Run any time new errors are pushed to main
 on:
   push:
-    branches:
-      - 'add-error-tracker'
     paths:
       - 'errors/**'
   workflow_dispatch:
@@ -18,7 +16,6 @@ jobs:
       - name: Checkout self
         uses: actions/checkout@v4
         with:
-          ref: 'add-error-tracker'
           path: './library-catalog'
           sparse-checkout: |
             errors
