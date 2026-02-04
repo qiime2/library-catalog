@@ -87,7 +87,7 @@
   {
     name: "cutadapt over-cuts when batch-size is passed",
     query: 'plugin: "q2-cutadapt" AND action: ("demux-paired" OR "demux-single") AND q2-cutadapt:
-      (^"2024" OR ^"2025") AND (cut: > 0 OR forward_cut: > 0 OR reverse_cut: > 0)  AND batch_size: > 0'
+      (^"2024" OR ^"2025") AND (cut: >0 OR forward_cut: >0 OR reverse_cut: >0) AND batch_size: >0'
     date: "2026-01-23",
     description:
       "The --p-batch-size flag enables demuxing samples in batches to avoid out-of-memory errors. 
