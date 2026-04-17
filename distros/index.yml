@@ -7,7 +7,7 @@ index:
       Tools for microbiome marker gene analysis from raw sequencing data through publication quality visualizations and statistics.
 
   - name: moshpit
-    alt: metagenome
+    alt: [metagenome]
     title: MOSHPIT
     docs: https://moshpit.qiime2.org/
     description: |
@@ -21,13 +21,14 @@ index:
 
   - name: tiny
     title: Tiny
-    docs: https://develop.qiime2.org/en/stable
+    docs: https://develop.qiime2.org/en/stable/
     description: |
       A minimal installation of rachis (formerly referred to as the QIIME 2 Framework) for developers that is intended to be extended with custom functionality and plugins.
 
 ignore:
-  - qiime2
+  - rachis
   - q2cli
   - q2galaxy
   - q2templates
   - MOSHPIT
+  - q2
