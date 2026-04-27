@@ -1,3 +1,4 @@
+import json
 import os
 import re
 import sys
@@ -8,7 +9,8 @@ import requests
 DIR = 'plugins'
 
 EXPECTED_KEY_SET = set(['owner', 'name', 'branch', 'docs'])
-ENV_FILE_REGEX = r'.*-qiime2-.*-20[0-9][0-9]\.([1-9]|1[0-2])\.yml'
+ENV_FILE_REGEX = \
+    r'.*-(qiime2|rachis)-.*-20[0-9][0-9]\.([1-9]|1[0-2]).*\.yml$'
 GITHUB_BASE_URL = "https://api.github.com"
 
 GITHUB_TOKEN = sys.argv[1]
@@ -133,4 +135,4 @@ if __name__ == "__main__":
             all_env_urls.extend(plugin_env_urls)
 
     with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-        fh.write(f'ENV_FILES={all_env_urls}\n')
+        fh.write(f'ENV_FILES={json.dumps(sorted(set(all_env_urls)))}\n')

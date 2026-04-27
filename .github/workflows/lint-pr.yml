@@ -39,15 +39,36 @@ jobs:
         id: lint
         run: python .github/scripts/lint.py ${{ secrets.GITHUB_TOKEN }} $DIFF
 
-  # Install all envs found and at least make sure `qiime info` runs
-  # TODO: Make this attempt to run pytest?
-  test-envs:
+  build-test-matrix:
     needs: lint-yml
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.build-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout library-catalog
+        uses: actions/checkout@v4
+
+      - name: Checkout distributions
+        uses: actions/checkout@v4
+        with:
+          repository: qiime2/distributions
+          ref: dev
+          path: distributions
+
+      - name: Build test matrix
+        id: build-matrix
+        run: |
+          python .github/scripts/build_test_matrix.py \
+            '${{ needs.lint-yml.outputs.ENV_FILES }}' \
+            ./distributions
+
+  # Install all envs found and at least make sure `qiime info` runs.
+  test-envs:
+    needs: build-test-matrix
     strategy:
-      matrix:
-        os: [ubuntu-latest, macos-15-intel]
-        url: ${{ fromJSON(needs.lint-yml.outputs.ENV_FILES) }}
-    runs-on: ${{ matrix.os }}
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.build-test-matrix.outputs.matrix) }}
+    runs-on: ${{ matrix.runner_label }}
     env:
       prefix: ./test
 
@@ -57,16 +78,17 @@ jobs:
         uses: qiime2-cutlery/setup-miniconda@v3
         with:
           activate-environment: ''
-          architecture: 'x64'
+          architecture: ${{ matrix.conda_architecture }}
           auto-activate-base: true
           miniconda-version: 'latest'
 
-      # Hacky stff to make it so I can activate the conda env for testing
+      - name: Download environment file
+        run: curl -sSL '${{ matrix.url }}' -o env.yml
+
+      # Hacky stuff to make it so I can activate the conda env for testing
       - name: Set up Test Environment
-        env:
-          url: ${{ matrix.url }}
         run: |
-          conda env create -y -p ${{ env.prefix }} -f $url
+          conda env create -y -p ${{ env.prefix }} -f env.yml
           mkdir -p ${{ env.prefix }}/etc
           cat <<EOF > '${{ env.prefix }}/etc/activate.sh'
             . "$CONDA/etc/profile.d/conda.sh"
