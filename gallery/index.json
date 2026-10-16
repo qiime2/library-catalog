@@ -1,13 +1,13 @@
 [
+  "VizardScatterplot2D",
   "AlphaDiversityRaincloud",
   "TaxonomicBarPlots",
   "EmpireHMP",
   "G2SReport",
+  "AlphaRarefactionPlots",
   "VolatilityControlChart",
   "FeatureTableSummary",
-  "AlphaRarefactionPlots",
-  "EmperorOrdination",
   "AlphaDiversityBoxplots",
-  "VizardScatterplot2D",
-  "VizardLineplot"
+  "EmperorOrdination",
+  "VizardLineplot",
 ]
