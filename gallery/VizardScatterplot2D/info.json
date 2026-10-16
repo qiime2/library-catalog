@@ -1,0 +1,5 @@
+{
+    "title": "Vizard Scatterplot 2D",
+    "desc": "Explore various metadata measures in the Gut to Soil Tutorial. Try selecting different columns for the xField, yField and colorBy parameters to view different relationships.",
+    "href": "https://raw.githubusercontent.com/caporaso-lab/q2view-visualizations/main/scatterplot-2d.qzv"
+}

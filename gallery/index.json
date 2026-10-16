@@ -7,5 +7,7 @@
   "FeatureTableSummary",
   "AlphaRarefactionPlots",
   "EmperorOrdination",
-  "AlphaDiversityBoxplots"
+  "AlphaDiversityBoxplots",
+  "VizardScatterplot2D",
+  "VizardLineplot"
 ]

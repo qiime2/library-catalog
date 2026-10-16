@@ -1,0 +1,5 @@
+{
+    "title": "Vizard Lineplot",
+    "desc": "Explore different numeric relationships per subject (Bucket) across timepoint in the Gut to Soil Tutorial metadata.",
+    "href": "https://raw.githubusercontent.com/caporaso-lab/q2view-visualizations/main/lineplot.qzv"
+}
